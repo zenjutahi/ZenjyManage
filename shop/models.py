@@ -1,36 +1,38 @@
 from django.db import models
+from django.urls import reverse
 from django.conf import settings
 from accounts.models import CustomUser
 
 # Create your models here.
-
-
-class ShopCategory(models.Model):
+class BusinessCategory(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
     class Meta:
         ordering = ('name',)
-        app_label = 'shops'
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('shop:business_list_by_category',
+                       args=[self.slug])
 
-class Shop(models.Model):
+class Business(models.Model):
     owner = models.ForeignKey(
-        CustomUser, related_name='my_shops', on_delete=models.CASCADE)
-    shop_category = models.ForeignKey(
-        ShopCategory,  on_delete=models.DO_NOTHING, related_name='shops')
-    shop_name = models.CharField(max_length=255, unique=True)
+        CustomUser, related_name='shops', on_delete=models.CASCADE)
+    business_category = models.ForeignKey(
+        BusinessCategory, on_delete=models.CASCADE, related_name='productscategory')
+    name = models.CharField(max_length=200, db_index=True, unique=True)
     slug = models.SlugField(max_length=200, db_index=True)
     logo = models.ImageField(
         upload_to='shop/%Y/%m/%d', blank=True)
     description = models.CharField(max_length=1000, blank=True)
     address = models.CharField(max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
     city = models.CharField(max_length=50, blank=True)
     zip = models.CharField(max_length=5, blank=True)
     contact_number = models.CharField(max_length=12, blank=True)
@@ -38,12 +40,15 @@ class Shop(models.Model):
     updated_at = models.DateTimeField(null=True)
 
     class Meta:
-        ordering = ('shop_name',)
-        app_label = 'shops'
+        ordering = ('name',)
+        index_together = (('id', 'slug'),)
 
     def __str__(self):
-        return "{}".format(self.shop_name)
+        return "{}".format(self.name)
 
+    def get_absolute_url(self):
+        return reverse('shop:business_detail',
+                       args=[self.id, self.slug])
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -59,8 +64,8 @@ class ProductCategory(models.Model):
 
 
 class Product(models.Model):
-    shop = models.ForeignKey(
-        Shop, related_name='products', on_delete=models.CASCADE)
+    business = models.ForeignKey(
+        Business, related_name='shops', on_delete=models.CASCADE)
     product_category = models.ForeignKey(
         ProductCategory, on_delete=models.CASCADE, related_name='productscategory')
     name = models.CharField(max_length=200, db_index=True, unique=True)
