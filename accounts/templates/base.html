@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+    <head>
+        <!-- META SECTION -->
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" href="{% static 'shop/favicon.ico' %}"/> -->
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'shop/css/theme-default.css' %}" />
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+
+        <!-- START PLUGINS -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/jquery/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/bootstrap/bootstrap.min.js' %}"></script>
+        <!-- END PLUGINS -->
+
+        <!-- THIS PAGE PLUGINS -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/icheck/icheck.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+        <!-- END PAGE PLUGINS -->
+
+        <!-- START TEMPLATE -->
+        <!-- THIS PAGE PLUGINS -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'shop/js/plugins/noty/jquery.noty.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/noty/layouts/topCenter.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/noty/layouts/topLeft.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/noty/layouts/topRight.js' %}"></script>
+        
+        <script type="text/javascript" src="{% static 'shop/js/plugins/noty/themes/default.js' %}"></script>
+        <script type="text/javascript">
+            function notyConfirm(){
+                noty({
+                    text: 'Do you want to continue?',
+                    layout: 'topRight',
+                    buttons: [
+                            {addClass: 'btn btn-success btn-clean', text: 'Ok', onClick: function($noty) {
+                                $noty.close();
+                                noty({text: 'You clicked "Ok" button', layout: 'topRight', type: 'success'});
+                            }
+                            },
+                            {addClass: 'btn btn-danger btn-clean', text: 'Cancel', onClick: function($noty) {
+                                $noty.close();
+                                noty({text: 'You clicked "Cancel" button', layout: 'topRight', type: 'error'});
+                                }
+                            }
+                        ]
+                })
+            }
+        </script>
+        <!-- END PAGE PLUGINS -->
+
+
+        <script type="text/javascript" src="{% static 'shop/js/plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/actions.js' %}"></script>
+        <!-- END TEMPLATE -->
+    </body>
+</html>
