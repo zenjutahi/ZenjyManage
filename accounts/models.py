@@ -8,10 +8,9 @@ import datetime
 
 class CustomUser(AbstractUser):
     email = models.EmailField(('email address'), unique=True)
-    is_vendor = models.BooleanField(default=False)
-    is_rider = models.BooleanField(default=False)
     is_customer = models.BooleanField(default=True)
     join_date = models.DateField(default=datetime.date.today)
+    contact_number = models.CharField(max_length=100)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
@@ -32,6 +31,5 @@ class UserProfile(models.Model):
     country = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=50, blank=True)
     zip = models.CharField(max_length=5, blank=True)
-    contact_number = models.CharField(max_length=100)
     profile_pic = models.ImageField(
         upload_to='profile/%Y/%m/%d', blank=True, null=True)
