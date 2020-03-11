@@ -1,28 +1,28 @@
 from django.conf import settings
 from django.contrib import admin
 
-from .models import Shop, ShopCategory, ProductCategory, Product
+from .models import Business, BusinessCategory, ProductCategory, Product
 
 # Register your models here.
 
 
-class ShopCategoryAdmin(admin.ModelAdmin):
+class BusinessCategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
 
 
-admin.site.register(ShopCategory, ShopCategoryAdmin)
+admin.site.register(BusinessCategory, BusinessCategoryAdmin)
 
 
-class ShopAdmin(admin.ModelAdmin):
-    list_display = ['owner', 'shop_category', 'shop_name', 'slug', 'logo',
+class BusinessAdmin(admin.ModelAdmin):
+    list_display = ['owner', 'business_category', 'name', 'slug',
                     'description', 'address', 'country', 'contact_number', 'city']
-    list_filter = ['owner', 'shop_category', 'shop_name', 'updated_at']
-    list_editable = ['contact_number', 'address', 'shop_name']
-    prepopulated_fields = {'slug': ('shop_name',)}
+    list_filter = ['owner', 'business_category', 'name', 'updated_at']
+    list_editable = ['contact_number', 'address', 'name']
+    prepopulated_fields = {'slug': ('name',)}
 
 
-admin.site.register(Shop, ShopAdmin)
+admin.site.register(Business, BusinessAdmin)
 
 
 class ProductCategoryAdmin(admin.ModelAdmin):
