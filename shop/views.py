@@ -1,6 +1,33 @@
 from django.shortcuts import render, get_object_or_404
-from .models import BusinessCategory, Business
+from .models import BusinessCategory, Business, ProductCategory, Product
 
+
+
+
+
+def product_list(request, category_slug=None):
+    product_category = None
+    product_categories = ProductCategory.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        product_category = get_object_or_404(Product, slug=category_slug)
+        print(product_category)
+        products = products.filter(business_category=product_category)
+    return render(
+        request,
+        'shop/home/product_list.html',
+        {'product_category': product_category,
+         'product_categories': product_categories,
+         'products': products })
+
+def checkout_page(request):
+    product_categories = ProductCategory.objects.all()
+    products = Product.objects.filter(available=True)
+    return render(
+        request,
+        'shop/home/checkout_page.html',
+        {'product_categories': product_categories,
+         'products': products })
 
 def business_list(request, category_slug=None):
     busines_category = None
