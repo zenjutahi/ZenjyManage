@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- META SECTION -->
+        <title>Liquire Place</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'shop/favicon.ico' %}"/>
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'shop/css/theme-default.css' %}" />
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>
+        <!-- START PAGE CONTAINER -->
+        <div class="page-container">
+            <!-- START PAGE SIDEBAR -->
+
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <!-- <a href="#"><span class="fa fa-beer">Lp</span></a> -->
+                        <a href="{% url 'product_list' %}"><span class="fa fa-barcode" style="font-size:20px;"></span></a>
+
+                    </li>
+
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                    <li class="xn-search">
+                        <form role="form">
+                            <input type="text" name="search" placeholder="Search..."/>
+                        </form>
+                    </li>
+                    <!-- END SEARCH -->
+                    <!-- SIGN OUT -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                    </li>
+                    <!-- END SIGN OUT -->
+
+                    <!-- TASKS -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#"><span class="fa fa-shopping-cart"></span></a>
+                        <div class="informer informer-warning">3</div>
+                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="fa fa-shopping-cart"></span> Cart</h3>
+                                <div class="pull-right">
+                                    <span class="label label-warning">3 products</span>
+                                </div>
+                            </div>
+                            <div class="panel-body list-group scroll" style="height: 200px;">
+                                <a class="list-group-item" href="#">
+                                    <strong>Phasellus augue arcu, elementum</strong>
+                                    <div class="progress progress-small progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+                                    </div>
+                                    <small class="text-muted">John Doe, 25 Sep 2014 / 50%</small>
+                                </a>
+                                <a class="list-group-item" href="#">
+                                    <strong>Aenean ac cursus</strong>
+                                    <div class="progress progress-small progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+                                    </div>
+                                    <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2014 / 80%</small>
+                                </a>
+                                <a class="list-group-item" href="#">
+                                    <strong>Lorem ipsum dolor</strong>
+                                    <div class="progress progress-small progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">95%</div>
+                                    </div>
+                                    <small class="text-muted">John Doe, 23 Sep 2014 / 95%</small>
+                                </a>
+                                <a class="list-group-item" href="#">
+                                    <strong>Cras suscipit ac quam at tincidunt.</strong>
+                                    <div class="progress progress-small">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                                    </div>
+                                    <small class="text-muted">John Doe, 21 Sep 2014 /</small><small class="text-success"> Done</small>
+                                </a>
+                            </div>
+                            <div class="panel-footer text-center">
+                                <a href="pages-tasks.html">Show all tasks</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END TASKS -->
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb push-down-0">
+                    {% for category in product_categories %}
+                    <li>{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+                <!-- END BREADCRUMB -->
+                <!-- START CONTENT FRAME -->
+                <div class="content-frame">
+
+                    <!-- START CONTENT FRAME TOP -->
+                    <div class="content-frame-top">
+                        <div class="page-title">
+                            <h2><span> {{ product_categories.first }}</span></h2>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Talk To Our Customer Care 🇰🇪"><span class="glyphicon glyphicon-phone-alt"></span>Call 0722905016</button>
+                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
+                        </div>
+                    </div>
+
+                    <!-- START CONTENT FRAME RIGHT -->
+                    <div class="content-frame-right">
+                        <div class="block push-up-10">
+                            <div class="widget widget-warning widget-item-icon">
+                                <div class="widget-item-right">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                                <div class="widget-data-left">
+                                    <div class="widget-int num-count">48</div>
+                                    <div class="widget-title">New messages</div>
+                                    <div class="widget-subtitle">In your mailbox</div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Groups:</h4>
+                        <div class="list-group border-bottom push-down-20">
+                            <a href="#" class="list-group-item active">All <span class="badge badge-primary">12</span></a>
+                            <a href="#" class="list-group-item">Nature <span class="badge badge-success">7</span></a>
+                            <a href="#" class="list-group-item">Music <span class="badge badge-danger">3</span></a>
+                            <a href="#" class="list-group-item">Space <span class="badge badge-info">2</span></a>
+                            <a href="#" class="list-group-item">Girls <span class="badge badge-warning">3</span></a>
+                        </div>
+                        <h4>Tags:</h4>
+                        <ul class="list-tags">
+                            <li><a href="#"><span class="fa fa-tag"></span> amet</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> rutrum</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> nunc</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> tempor</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> eros</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> suspendisse</a></li>
+                            <li><a href="#"><span class="fa fa-tag"></span> dolor</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- START CONTENT FRAME BODY -->
+                    <div class="content-frame-body content-frame-body-left">
+
+                        <!-- START BORDERED TABLE SAMPLE -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Table in panel</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add class <code>.panel-body-table</code> to <code>panel-body</code> to remove paddings in panel and borders in table.</p>
+                            </div>
+                            <div class="panel-body panel-body-table">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>#</th>
+                                            <th>Product</th>
+                                            <th>Image</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Black Label </td>
+                                            <td>
+                                                <img src="{% static 'shop/assets/images/users/user2.jpg' %}" style="padding-bottom: 5px; width: 20px; height:30px; border-radius:12px;"/>
+                                                <a href="#"></a></td>
+                                            <td>2</td>
+                                            <td>Ksh 1200/-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Black Label</td>
+                                            <td>
+                                                <img src="{% static 'shop/assets/images/users/user2.jpg' %}" style="padding-bottom: 5px; width: 20px; height:30px; border-radius:12px;"/>
+                                                <a href="#"></a></td>
+                                            <td>1</td>
+                                            <td>Ksh 5200/-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Black Label</td>
+                                            <td>
+                                                <img src="{% static 'shop/assets/images/users/user2.jpg' %}" style="padding-bottom: 5px; width: 20px; height:30px; border-radius:12px;"/>
+                                                <a href="#"></a></td>
+                                            <td>12</td>
+                                            <td>Ksh 3200/-</td>
+                                        </tr>
+                                        <tr class="active">
+                                            <td>Total Cost</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>12 pieces</td>
+                                            <td>Ksh 31200/-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TABS WIDGET -->
+                        <div class="panel panel-default tabs">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active"><a href="#tab1" data-toggle="tab">Call & Order</a></li>
+                                <li><a href="#tab2" data-toggle="tab">Lipa Na Mpesa $ Order</a></li>
+                                <li><a href="#tab3" data-toggle="tab">Pay With Card $ Order</a></li>
+                            </ul>
+                            <div class="panel-body tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <p>Curabitur porttitor, lacus et mattis consequat, <strong>lectus augue</strong> molestie enim, nec dignissim felis eros at nibh.</p>
+                                    <p>Nulla vitae sodales est, eu imperdiet mauris <a href="#">click here</a>.</p>
+                                    <p>Sed augue risus, tempor vitae metus ac, bibendum elementum erat. Mauris volutpat at nulla sit amet ullamcorper.</p>
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                    <p><strong>Etiam eu augue</strong> &mdash; ac augue bibendum finibus. <i>Quisque aliquam mi eget consectetur finibus</i>. Duis ornare velit a diam auctor iaculis. Donec vitae rutrum est, nec convallis nulla.</p>
+                                    <p>Nulla laoreet viverra nisi.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at finibus risus. Fusce suscipit, neque vel sodales suscipit.</p>
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                    <p>Integer fringilla, augue in eleifend vehicula, sapien sem hendrerit sapien,</p>
+                                    <p>Praesent a tincidunt nisi, eget placerat eros. Sed ullamcorper metus quis dui malesuada, vitae rutrum nibh feugiat.</p>
+                                    <p>Vivamus lacinia, leo eu cursus commodo, diam nunc suscipit tellus, in viverra nulla magna ut enim. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END TABS WIDGET -->
+
+                        <!-- END BORDERED TABLE SAMPLE -->
+                    </div>
+
+                    <!-- END CONTENT FRAME BODY -->
+                </div>
+                <!-- END CONTENT FRAME -->
+
+
+            </div>
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+
+        <!-- BLUEIMP GALLERY -->
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+        <!-- END BLUEIMP GALLERY -->
+
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->
+
+        <!-- START PRELOADS -->
+        <audio id="audio-alert" src="{% static 'shop/audio/alert.mp3' %}" preload="auto"></audio>
+        <audio id="audio-fail" src="{% static 'shop/audio/fail.mp3' %}" preload="auto"></audio>
+        <!-- END PRELOADS -->
+
+        <!-- START PLUGINS -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/jquery/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/bootstrap/bootstrap.min.js' %}"></script>
+        <!-- END PLUGINS -->
+
+        <!-- THIS PAGE PLUGINS -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/icheck/icheck.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+        <!-- END PAGE PLUGINS -->
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="{% static 'shop/js/plugins/blueimp/jquery.blueimp-gallery.min.js' %}"></script>
+
+
+        <script type="text/javascript" src="{% static 'shop/js/plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/actions.js' %}"></script>
+        <!-- END PLUGINS -->
+
+
+        <script type="text/javascript" src="{% static 'shop/js/plugins/blueimp/jquery.blueimp-gallery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'shop/js/plugins/dropzone/dropzone.min.js' %}"></script>
+        <!-- END THIS PAGE PLUGINS-->
+        <script>
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement;
+                var link = target.src ? target.parentNode : target;
+                var options = {index: link, event: event,onclosed: function(){
+                        setTimeout(function(){
+                            $("body").css("overflow","");
+                        },200);
+                    }};
+                var links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+        </script>
+
+    <!-- END SCRIPTS -->
+    </body>
+</html>
