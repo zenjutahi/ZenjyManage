@@ -103,7 +103,7 @@ body {
 }
 .page-container .page-content {
   min-height: 100%;
-  margin-left: 30px;
+  margin-left: 50px;
   background: #f5f5f5 url('../img/bg.png') left top repeat;
   position: relative;
   zoom: 1;
@@ -319,7 +319,7 @@ body.page-container-boxed .page-container {
   transition: color 200ms ease;
 }
 .x-navigation li > a:hover {
-  background: #3d4e5d;
+  background: #333;
   -webkit-transition: all 200ms ease;
   -moz-transition: all 200ms ease;
   -ms-transition: all 200ms ease;
@@ -1179,22 +1179,23 @@ body.page-container-boxed .page-container {
 }
 .breadcrumb li,
 .breadcrumb li a {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 12px;
-  color: #99a0aa;
+  color: #333;
   text-decoration: none;
+  cursor: pointer;
 }
 .breadcrumb li:hover,
 .breadcrumb li a:hover {
   color: #656d78;
 }
 .breadcrumb li:last-child {
-  color: #656d78;
+  color: #dc8711;
 }
 .breadcrumb > li + li:before {
   font-family: "FontAwesome";
   content: "\f105";
-  color: #99a0aa;
+  color:  #dc8711;
   padding: 0px 8px;
 }
 /* EOF BREADCRUMB */
@@ -3091,8 +3092,8 @@ blockquote.pull-right {
   background: #F8FAFC;
 }
 .table > thead > tr > th {
-  background: http://127.0.0.1:8000/accounts/login/;
-  color: #56688A;
+  background: #333;
+  color: #333;
   font-size: 12px;
 }
 .panel-body.panel-body-table {
@@ -4708,7 +4709,7 @@ td.dataTables_empty {
 }
 .gallery .gallery-item {
   float: left;
-  width: 25%;
+  width: 16.666%;
   padding: 10px 5px 10px 5px;
   text-decoration: none;
 }

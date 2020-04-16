@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'uehcl=%p7oq@19&lr1p1y6xuzp7yh4h+z@e3==is$2q%)8uilf'
 
+CART_SESSION_ID = 'cart'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -42,8 +44,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # Own apps
-    'shop',
     'accounts',
+    'shop',
+    'cart',
 ]
 
 MIDDLEWARE = [
